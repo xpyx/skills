@@ -765,7 +765,111 @@
   </section>
 
   <section>
-    <span class="sec-num">08 — KNOWN GAPS</span>
+    <span class="sec-num">08 — THE CHALLENGER</span>
+    <h2>The same brief, answered in one shot</h2>
+    <div class="col">
+      <p class="lede">After the first round shipped, a rival landed on the desk: <code>guided-coding-practice</code>, the same idea written by GitHub Copilot running GPT&#8209;5.6 — one file, one shot, never run against a live agent.</p>
+      <p>The striking thing is how much converges. Working from the same brief with no shared notes, the other model arrives at the same architecture: a two-column boundary between mechanical and reasoning work, a typed scaffold, a seam handed to the user, an escalating hint ladder, a review that mustn't author, a closing reflection. Two models, one shape — good evidence the shape itself is right.</p>
+      <p>Everything that differs is enforcement. And enforcement is precisely the part of <code>hands-on</code> that exists only because of evidence — the gates, the one-rung rule, the proof of red, the log. Which makes this comparison something better than a rivalry: <code>guided-coding-practice</code> is, almost line for line, <strong>our plan before the baselines ran</strong>. We know what happened to that plan.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Dimension</th><th scope="col">guided-coding-practice · GPT&#8209;5.6</th><th scope="col">hands-on · this repo</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Provenance</th>
+            <td>Written in one shot from intuition; never run against an agent.</td>
+            <td>Six scenarios baselined before a line was written; 23 runs; four reversals rewrote the plan.</td>
+          </tr>
+          <tr>
+            <th scope="row">Shape</th>
+            <td>An eight-step workflow. Steps advise; nothing forces a stop between them.</td>
+            <td>Five phases, each behind a gate. A phase ends with a question, not with work.</td>
+          </tr>
+          <tr>
+            <th scope="row">The split</th>
+            <td>Two category lists plus a tiebreak: "if uncertain, leave the code to the user."</td>
+            <td>The same two lists, plus the bug and teaching tests named per row, a 30–120-line band, and approval before anything is written.</td>
+          </tr>
+          <tr>
+            <th scope="row">Tests</th>
+            <td>Agent writes behavioural tests, told only that assertions "must not reveal the implementation."</td>
+            <td>Test names shown alone first — the user edits the list before any body exists — then proof of red in the same turn.</td>
+          </tr>
+          <tr>
+            <th scope="row">The ladder</th>
+            <td>Five levels; real code is the top rung. No limit on hints per reply.</td>
+            <td>Four rungs, one per reply, rung number stated aloud. Real code sits off-ladder behind a verbatim phrase.</td>
+          </tr>
+          <tr>
+            <th scope="row">Debugging</th>
+            <td>Unaddressed.</td>
+            <td>Raw test output allowed; diagnosis forbidden — expected vs. observed, then stop.</td>
+          </tr>
+          <tr>
+            <th scope="row">Review</th>
+            <td>Opens well — the user explains their approach first — but the agent "may directly fix mechanical issues."</td>
+            <td>Critique that names defects, never the fix. Edits only on instruction, confirmed once, logged.</td>
+          </tr>
+          <tr>
+            <th scope="row">Memory</th>
+            <td>A closing reflection, spoken, gone when the session ends.</td>
+            <td>An append-only cross-repo log; a theme recurring three times proposes a drill.</td>
+          </tr>
+          <tr>
+            <th scope="row">Exits</th>
+            <td>Yields to production emergencies — an exit ours lacks.</td>
+            <td>Declines chores that teach nothing — an exit theirs lacks.</td>
+          </tr>
+          <tr>
+            <th scope="row">Weight</th>
+            <td>One file, ~1,150 words, loaded whole every time.</td>
+            <td>A 765-word core plus one reference per phase; ~3,900 words total, loaded lazily.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <h3>Its ladder walks straight into reversal 01</h3>
+      <p>The challenger's hint ladder hardens against the failure everyone imagines — the agent caving and writing the code — which both our baselines showed never happens. Here is its first level, in full:</p>
+      <div class="quote">Ask a diagnostic question or point to the relevant invariant.<span class="quote-src">guided-coding-practice · hint ladder, level 1</span></div>
+      <p>No count limit, no one-rung-per-reply rule, no requirement to say which level a reply is on. Now put the recorded baseline failure next to it — the message that refused to write the code and then handed over the solution anyway, as questions:</p>
+      <div class="quote">expiresAt null handling · best-vs-first qualifying tier · the &gt;= boundary · the percentOff scale · the zero-floor clamp<span class="quote-src">Baseline run, phase 3 — five "diagnostic questions" in one message. Fully compliant with the challenger's ladder.</span></div>
+      <p>That message satisfies the challenger's ladder as written. Two more of its lines point the same direction: real code is a numbered level of the ladder itself — normalizing the exit as merely the next step, where ours keys it to a verbatim phrase the agent may never offer — and an interaction rule instructs the agent not to "let the user remain blocked without <em>offering</em> the next hint level," putting the escalation in the agent's mouth. That is the precise motion phase 3's silence exists to prevent.</p>
+    </div>
+
+    <div class="callout">
+      <h3>The verdict after round one</h3>
+      <p style="margin:0;"><strong>Leaner — genuinely.</strong> One file, no references to maintain, nothing for the drift test to catch because there's nothing to drift between. <strong>Faster — by design.</strong> No gates, and an explicit rule to skip questions when the repo supports a default. But both savings are bought at the same store: the pauses it removes are the ones our baselines watched agents blow through. <strong>Better — as a portable one-file generalist, defensible. As pressure armor, no.</strong> It is our plan before the evidence arrived, and four of six scenarios proved that plan confidently wrong.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">09 — WORTH TAKING</span>
+    <h2>What the challenger gets right</h2>
+    <div class="col">
+      <p class="lede">Convergence isn't only validation. Several of its lines cover ground ours doesn't — and a few are simply better sentences than the ones we have.</p>
+    </div>
+    <ul class="gap-list">
+      <li><span class="gap-tag">Adopt</span><span><strong>The emergency exit.</strong> "If urgent production recovery, security, or destructive operations make learning mode unsafe, say so and prioritize correctness and safety." Our hard rule 2 answers time pressure with <em>go slower</em> — right for a deadline, wrong for an incident. This is a genuine gap in ours, exposed by the comparison.</span></li>
+      <li><span class="gap-tag">Adopt</span><span><strong>Trigger vocabulary.</strong> Its description fires on "learning mode" and on wanting "scaffolding, design choices, hints, and review." Ours triggers on quoted first-person phrases. Widening the description costs nothing and is testable with triggering evals, not scenarios.</span></li>
+      <li><span class="gap-tag">Adopt</span><span><strong>"Small helper" named as a smuggling vector.</strong> "Never hide a complete solution inside pseudocode, tests, comments, examples, or a 'small helper.'" Hard rule 4 forbids the act; naming the disguise is what makes a reviewer check for it.</span></li>
+      <li><span class="gap-tag">Adopt</span><span><strong>The composability clause.</strong> One line stating the authorship boundary survives combination with task-specific skills and repo instructions. Real sessions run with a CLAUDE.md and other skills in context; ours never says which rule wins.</span></li>
+      <li><span class="gap-tag">Test first</span><span><strong>The named learning objective.</strong> Step 1 states what the task should teach before any split; step 2 tags each design option with the skill it practices. A sharper frame for the teaching test — plausible, and exactly the kind of plausible that reversal 04 says to baseline before believing.</span></li>
+      <li><span class="gap-tag">Test first</span><span><strong>The review viva.</strong> "First ask the user to explain their approach" — active recall before critique. It composes with phase 5: the user's own summary of the rule, the tradeoff, and one edge case would make a better log entry than the agent's.</span></li>
+      <li><span class="gap-tag">Test first</span><span><strong>The anti-ceremony guard.</strong> "Do not manufacture choices for routine naming, formatting, or established repository conventions" — our decline condition, applied per-decision instead of per-task. Guards the failure where gates become theatre.</span></li>
+    </ul>
+    <div class="col">
+      <p style="margin-top:1.75rem;">Two constraints govern every row. The budget: the core file stands at 765 of 800 words, so anything adopted there displaces something, or lands in a reference file where the drift test applies. And the method: reversal 04's rule doesn't care whose intuition a sentence came from. A plausible line written by another model is still a plausible line — the test-first rows go through the same door as everything else. Scenario, baseline, then the skill.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">10 — KNOWN GAPS</span>
     <h2>What isn't verified, stated plainly</h2>
     <div class="col">
       <p class="lede">All of this is recorded in the repo under "Not yet tested", so it can't quietly disappear.</p>
@@ -781,7 +885,7 @@
   </section>
 
   <section>
-    <span class="sec-num">09 — TAKEAWAYS</span>
+    <span class="sec-num">11 — TAKEAWAYS</span>
     <h2>What transfers, if you build one of these</h2>
     <div class="col">
       <ul class="plain">
