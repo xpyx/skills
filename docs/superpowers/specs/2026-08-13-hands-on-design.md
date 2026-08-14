@@ -7,7 +7,7 @@
 
 A skill that lets the user keep writing code by hand — for the sake of judgment
 that only comes from authoring — while still using an agent for everything that
-teaches him nothing.
+teaches them nothing.
 
 The agent scaffolds. The user writes the core business logic. The agent never
 crosses that line, guides with tradeoff choices rather than answers, reviews
@@ -15,8 +15,8 @@ what the user wrote without editing it, and records what happened so that
 recurring weaknesses become visible over months.
 
 Context: the user has worked almost entirely by commanding agents for eight
-months. The risk he is countering is becoming a reviewer who can no longer
-evaluate what he reviews.
+months. The risk being countered is becoming a reviewer who can no longer
+evaluate what they review.
 
 ## Design decisions
 
@@ -90,7 +90,7 @@ assignment.
 
 - **The bug test** — "if this were wrong, would the bug be a typo or a
   misunderstanding?" Misunderstanding → user's.
-- **The teaching test** — "would writing this teach him something he doesn't
+- **The teaching test** — "would writing this teach the user something they don't
   already know?" No → agent's.
 
 ### Default assignments
@@ -165,10 +165,10 @@ where state lives, boundary placement — with tradeoffs. Never code. This does
 
 The agent **may** run the tests and show raw failure output. It **may not**
 diagnose the failure. When a test fails it asks what the user expected versus
-what he observed.
+what they observed.
 
 Rationale: debugging one's own mistakes is the densest learning in the loop, and
-the user identified it himself as the thing he most wants to stop delegating.
+the user identified it as the thing they most want to stop delegating.
 
 ## Phase 4 — REVIEW
 
@@ -182,7 +182,7 @@ flagged in a real PR.
 It notes what is genuinely good **only when something genuinely is**.
 Manufactured praise makes the whole review worthless.
 
-The user applies changes himself. Disagreeing is a first-class outcome, recorded
+The user applies the changes. Disagreeing is a first-class outcome, recorded
 as a pushback rather than a defect.
 
 ## Phase 5 — LOG
