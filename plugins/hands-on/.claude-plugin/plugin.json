@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "hands-on",
+  "displayName": "Hands On",
+  "version": "0.1.0",
+  "description": "Keeps the agent to scaffolding, tests, and review while you write the core business logic by hand.",
+  "author": {
+    "name": "xpyx",
+    "url": "https://github.com/xpyx"
+  },
+  "homepage": "https://github.com/xpyx/skills/tree/main/plugins/hands-on",
+  "repository": "https://github.com/xpyx/skills",
+  "license": "MIT",
+  "keywords": ["skill", "practice", "deliberate-practice", "code-review", "tdd"]
+}
