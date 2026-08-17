@@ -17,14 +17,21 @@ like changes to executable code than to documentation.
 
 ## Writing a skill
 
-A skill lives in its own directory with a `SKILL.md` at the root:
+Each skill ships as its own installable plugin, so a new skill means a new
+directory under `plugins/` and a new entry in `.claude-plugin/marketplace.json`:
 
 ```
-my-skill/
-  SKILL.md          # frontmatter (name, description) + the skill body
-  references/       # detail files the skill points to, loaded on demand
-  tests/            # scenarios demonstrating the skill under pressure
+plugins/my-skill/
+  .claude-plugin/
+    plugin.json     # name, description, version, author
+  skills/my-skill/
+    SKILL.md        # frontmatter (name, description) + the skill body
+    references/     # detail files the skill points to, loaded on demand
+    tests/          # scenarios demonstrating the skill under pressure
 ```
+
+Run `claude plugin validate . --strict` before opening a pull request; it checks
+both manifests and the skill frontmatter.
 
 Keep `SKILL.md` short and make it carry the rules that must always hold. Push
 detail into `references/` and cite it rather than restating it — duplicated rules

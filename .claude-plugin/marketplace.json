@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "xpyx-skills",
+  "description": "Agent skills that constrain how an agent works, not just what it knows.",
+  "owner": {
+    "name": "xpyx",
+    "url": "https://github.com/xpyx"
+  },
+  "plugins": [
+    {
+      "name": "hands-on",
+      "source": "./plugins/hands-on",
+      "description": "Keeps the agent to scaffolding, tests, and review while you write the core business logic by hand.",
+      "version": "0.1.0",
+      "author": {
+        "name": "xpyx",
+        "url": "https://github.com/xpyx"
+      },
+      "homepage": "https://github.com/xpyx/skills/tree/main/plugins/hands-on",
+      "repository": "https://github.com/xpyx/skills",
+      "license": "MIT",
+      "category": "workflow",
+      "keywords": ["skill", "practice", "deliberate-practice", "code-review", "tdd"],
+      "tags": ["skill", "practice", "deliberate-practice", "code-review", "tdd"]
+    }
+  ]
+}
